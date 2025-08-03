@@ -7,9 +7,6 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        service: [WebApplication1]
 
     steps:
     - name: Checkout code
@@ -25,7 +22,8 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ steps.lower.outputs.image_name }}:latest ./${{ matrix.service }}
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/wepapplication1:latest ./WepApplication1/WepApplication1
+
 
     - name: Push Docker image
       run: |
